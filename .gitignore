@@ -1,0 +1,27 @@
+######################
+# Project Files
+######################
+.project
+.metadata
+.classpath
+.settings/**
+.loadpath
+.buildpath
+target/*
+*.class
+
+######################
+# Package Files
+######################
+*.jar
+*.war
+*.ear
+*.db
+
+
+######################
+# Mac
+######################
+.DS_Store
+
+
