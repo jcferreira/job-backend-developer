@@ -7,7 +7,7 @@
 .settings/**
 .loadpath
 .buildpath
-target/*
+target/**
 *.class
 
 ######################
