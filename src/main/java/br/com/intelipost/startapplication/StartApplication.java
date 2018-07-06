@@ -1,12 +1,12 @@
-package br.com.intelipost.jobbackenddeveloper;
+package br.com.intelipost.startapplication;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class JobBackendDeveloperApplication {
+public class StartApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(JobBackendDeveloperApplication.class, args);
+		SpringApplication.run(StartApplication.class, args);
 	}
 }
