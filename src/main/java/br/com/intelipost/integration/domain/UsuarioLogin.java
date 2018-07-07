@@ -32,6 +32,9 @@ public class UsuarioLogin {
     @Column(nullable=false)
     private String senha;
 
+    @Column(nullable=false)
+    private boolean ativo;
+    
     @OneToMany(fetch=FetchType.EAGER)
     private List<Role> permissoes = new ArrayList<Role>();
     

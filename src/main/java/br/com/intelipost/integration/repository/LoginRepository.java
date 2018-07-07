@@ -6,4 +6,6 @@ import br.com.intelipost.integration.domain.UsuarioLogin;
 
 public interface LoginRepository extends JpaRepository<UsuarioLogin, Long> {
 
+	UsuarioLogin findByEmailAndAtivoTrue(String email);
+	
 }

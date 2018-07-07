@@ -7,7 +7,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication
-@ComponentScan(basePackages = {"br.com.intelipost.controller"})
+@ComponentScan(basePackages = {"br.com.intelipost"})
 @EntityScan("br.com.intelipost.integration.domain")
 @EnableJpaRepositories("br.com.intelipost.integration.repository")
 public class StartApplication {
