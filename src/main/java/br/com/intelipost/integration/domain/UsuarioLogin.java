@@ -3,6 +3,7 @@ package br.com.intelipost.integration.domain;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -35,7 +36,7 @@ public class UsuarioLogin {
     @Column(nullable=false)
     private boolean ativo;
     
-    @OneToMany(fetch=FetchType.EAGER)
+    @OneToMany(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
     private List<Role> permissoes = new ArrayList<Role>();
     
 }
