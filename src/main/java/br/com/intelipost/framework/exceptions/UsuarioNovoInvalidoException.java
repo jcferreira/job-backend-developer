@@ -1,7 +1,7 @@
 package br.com.intelipost.framework.exceptions;
 
 
-public class UsuarioNovoInvalidoException extends Exception {
+public class UsuarioNovoInvalidoException extends RuntimeException {
 
     private static final long serialVersionUID = -5890674712551694852L;
     

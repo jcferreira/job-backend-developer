@@ -17,13 +17,19 @@ public class UsuarioBusinessImpl implements UsuarioBusiness {
 	@Autowired
 	private LoginRepository loginRepository;
 	
-	public Usuario criarLogin(Usuario usuario) throws UsuarioNovoInvalidoException{
+	public Usuario criarLogin(Usuario usuario) {
+		
+System.out.println(" >>>> Usuario: " + usuario);
+
 		validarUsuario(usuario);
 		UsuarioLogin usuarioLogin = loginRepository.save(new ModelMapper().map(usuario, UsuarioLogin.class));
 		return new ModelMapper().map(usuarioLogin, Usuario.class);
 	}
 	
-	private void validarUsuario(Usuario usuario) throws UsuarioNovoInvalidoException {
+	private void validarUsuario(Usuario usuario) {
+		
+System.out.println(" >>>>  " + StringUtils.isBlank(usuario.getNome()));
+		
 		if (usuario == null || StringUtils.isBlank(usuario.getNome()) || 
 				StringUtils.isBlank(usuario.getEmail()) || StringUtils.isBlank(usuario.getSenha()) ) 
 			throw new UsuarioNovoInvalidoException("É necessário o preenchimento de todos os campos para realizar o cadastro de usuário!");

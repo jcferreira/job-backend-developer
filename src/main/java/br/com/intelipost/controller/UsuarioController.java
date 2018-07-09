@@ -18,12 +18,6 @@ public class UsuarioController {
 	@Autowired
 	private UsuarioBusiness usuarioBusiness;
 	
-	@PostMapping("/login_antigo")
-	public String login(String email, String senha) {
-//		usuarioBusiness.efetuarLogin(email, senha)
-		return "listaUsuario";
-	}
-
 	@GetMapping("/cadastrar")
 	public String telaCadastrar() {
 		return "home";
@@ -43,6 +37,5 @@ public class UsuarioController {
 	public String listaUsuario(Model model) {
 		return "listaUsuario";
 	}
-
 
 }
