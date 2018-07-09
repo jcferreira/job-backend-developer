@@ -1,6 +1,7 @@
 package br.com.intelipost.integration.domain;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -15,12 +16,17 @@ import javax.persistence.Table;
 
 import lombok.Data;
 
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
 @Entity
 @Table(name = "usuario_login")
 @Data
-public class UsuarioLogin {
+public class UsuarioLogin implements UserDetails {
 
-    @Id
+    private static final long serialVersionUID = 5030385358666161643L;
+
+	@Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
     
@@ -38,5 +44,40 @@ public class UsuarioLogin {
     
     @OneToMany(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
     private List<Role> permissoes = new ArrayList<Role>();
+
+	@Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+	    return this.permissoes;
+    }
+
+	@Override
+    public String getPassword() {
+	    return this.senha;
+    }
+
+	@Override
+    public String getUsername() {
+	    return this.email;
+    }
+
+	@Override
+    public boolean isAccountNonExpired() {
+	    return true;
+    }
+
+	@Override
+    public boolean isAccountNonLocked() {
+	    return true;
+    }
+
+	@Override
+    public boolean isCredentialsNonExpired() {
+	    return true;
+    }
+
+	@Override
+    public boolean isEnabled() {
+	    return true;
+    }
     
 }

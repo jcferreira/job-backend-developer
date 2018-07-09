@@ -11,7 +11,8 @@
 
 	<div class="container">
         <h1 class="text-center">Seja bem vindo!</h1>
-        <p class="lead text-center">Informe o login e senha abaixo para realizar acesso ao portal.</p>
+        <p class="lead text-center">Informe os dados abaixo para realizar cadastro de usuário.</p>
+<!-- 
 		<div id="box-login" style="margin-top: 50px;"
 			class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
 			<div class="panel panel-info">
@@ -23,7 +24,7 @@
 
 					<div style="display: none" id="login-alert" class="alert alert-danger col-sm-12"></div>
 
-					<form id="loginform" class="form-horizontal" role="form" method="post" action="/usuario/login" >
+					<form id="loginform" class="form-horizontal" role="form" method="POST" th:action="@{/login}">
 
 						<div style="margin-bottom: 25px" class="input-group">
 							<span class="input-group-addon"><i
@@ -40,8 +41,6 @@
 
 
 						<div style="margin-top: 10px" class="form-group">
-							<!-- Button -->
-
 							<div class="col-sm-12 controls">
 								<button type="submit" class="btn btn-success">Login</button>
 							</div>
@@ -64,23 +63,26 @@
 				</div>
 			</div>
 		</div>
-		<div id="box-cadastre-se" style="display: none; margin-top: 50px"
-			class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+		<div id="box-cadastre-se" style="display: none; margin-top: 50px" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+-->
+
+		<div id="box-cadastre-se" style="margin-top: 50px" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
 			<div class="panel panel-info">
 				<div class="panel-heading">
-					<div class="panel-title">Login</div>
-					<div
-						style="float: right; font-size: 85%; position: relative; top: -10px">
-						<a id="signinlink" href="#"
-							onclick="$('#box-cadastre-se').hide(); $('#box-login').show()">Login</a>
+					<div class="panel-title">Cadastro de usuário</div>
+					<div style="float: right; font-size: 85%; position: relative; top: -10px">
+						<!-- 
+						<a id="signinlink" href="#"	onclick="$('#box-cadastre-se').hide(); $('#box-login').show()">Login</a>
+						 -->
+						 <a id="signinlink" href="/login">Login</a>
 					</div>
 				</div>
 				<div class="panel-body">
-					<form id="signupform" class="form-horizontal" role="form" method="post" action="/usuario/cadastrar">
+					<form id="signupform" class="form-horizontal" role="form" method="POST" th:action="@{/usuario/cadastrar}" >
 
-						<div id="cadastre-se-alert" style="display: none"
-							class="alert alert-danger">
-							<p>Erro: </p>
+
+						<div th:if="${msgErro}" id="cadastre-se-alert" class="alert alert-danger">
+							<p>Erro: <span th:text="${msgErro}"></span> </p>
 							<span></span>
 						</div>
 
@@ -106,10 +108,9 @@
 						</div>
 
 						<div class="form-group">
-							<!-- Button -->
 							<div class="col-md-offset-3 col-md-9">
 								<button id="btn-signup" type="submit" class="btn btn-info">
-									<i class="icon-hand-right"></i> &nbsp Concluir
+									<i class="icon-hand-right"></i> &nbsp Cadastrar
 								</button>
 							</div>
 						</div>

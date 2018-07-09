@@ -5,6 +5,8 @@ import java.util.List;
 
 import lombok.Data;
 
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
 @Data
 public class Usuario {
 
@@ -13,7 +15,7 @@ public class Usuario {
 	public Usuario(String email, String nome, String senha) {
 		this.email = email;
 		this.nome = nome;
-		this.senha = senha;
+		this.senha = new BCryptPasswordEncoder().encode(senha);
 		this.ativo = Boolean.TRUE;
 		this.permissoes = Arrays.asList(new Role("ROLE_ADMIN"));
 	}

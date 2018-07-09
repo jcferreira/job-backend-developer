@@ -1,18 +1,18 @@
 package br.com.intelipost.framework.exceptions;
 
 
-public class SenhaInvalidaException extends Exception {
+public class UsuarioNovoInvalidoException extends Exception {
 
-    private static final long serialVersionUID = 2688744592146866762L;
+    private static final long serialVersionUID = -5890674712551694852L;
     
 	private String mensagem;
     
-    public SenhaInvalidaException(){
+    public UsuarioNovoInvalidoException(){
     	super();
     	this.mensagem = "";
     }
     
-    public SenhaInvalidaException(String mensagem){
+    public UsuarioNovoInvalidoException(String mensagem){
     	super(mensagem);
     	this.mensagem = mensagem;
     }

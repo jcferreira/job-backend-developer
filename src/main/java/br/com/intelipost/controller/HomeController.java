@@ -9,8 +9,6 @@ public class HomeController {
 
 	@GetMapping("/")
 	public String home(Model model) {
-System.out.println(" >>>>>>>> HOME ");
-		model.addAttribute("nomeUsuario", "Julio");
 		return "home";
 	}
 
