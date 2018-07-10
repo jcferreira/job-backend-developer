@@ -28,6 +28,15 @@ Como você pode ver, nosso maior desafio está na manutenção e otimização de
 
 1) Imagine que hoje tenhamos um sistema de login e perfis de usuários. O sistema conta com mais de 10 milhões de usuários, sendo que temos um acesso concorrente de cerca de 5 mil usuários. Hoje a tela inicial do sistema se encontra muito lenta. Nessa tela é feita uma consulta no banco de dados para pegar as informações do usuário e exibi-las de forma personalizada. Quando há um pico de logins simultâneos, o carregamento desta tela fica demasiadamente lento. Na sua visão, como poderíamos iniciar a busca pelo problema, e que tipo de melhoria poderia ser feita?
 
+    1. Faria um thread dump da aplicação para avaliar se possui alguma memory leak e condições de performance em tempo de resposta a alguma query que está sendo executada a fim de realizar otimização.
+
+    2. Juntamente, avaliaria o alto volume de consultas (logins) que está sendo realizando no banco, abstraindo a conexão síncrono para uma estratégica de consulta assíncrona, podendo utilizar um framework para conectar ao banco de dados, no caso, como sugestão, utilizar o framework Akka para suportar o alto número de concorrência. 
+
+    3. O terceiro passo, mudando a estratégia para assíncrona, provavelmente o gargalo será o número de threads, que pode ser resolvido escalando de forma horizontal, colocando mais máquinas para suportar o alto volume de solicitações.
+
+    4. Este próximo item deve ser considerado em uma avaliação posterior a implementação dos 3 passos anteriores, que é o framework de persistência que está sendo utilizado. Realizando o passo 3, pode ser que o framework de persistência (hibernate por exemplo) não suporte o assincronismo de threads, se perdendo com o controles delas. Neste caso, outra sugestão é avaliar outros frameworks que suporte a concorrência de threads, como por exemplo Slik.
+
+
 2) Com base no problema anterior, gostaríamos que você codificasse um novo sistema de login para muitos usuários simultâneos e carregamento da tela inicial. Lembre-se que é um sistema web então teremos conteúdo estático e dinâmico. Leve em consideração também que na empresa existe um outro sistema que também requisitará os dados dos usuários, portanto, este sistema deve expor as informações para este outro sistema de alguma maneira.
 
 ### O que nós esperamos do seu teste
