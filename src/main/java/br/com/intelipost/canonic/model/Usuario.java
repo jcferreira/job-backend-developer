@@ -12,6 +12,11 @@ public class Usuario {
 
 	public Usuario() {}
 	
+	public Usuario(String email, String senha) {
+		this.email = email;
+		this.senha = new BCryptPasswordEncoder().encode(senha);
+	}
+
 	public Usuario(String email, String nome, String senha) {
 		this.email = email;
 		this.nome = nome;
@@ -19,7 +24,7 @@ public class Usuario {
 		this.ativo = Boolean.TRUE;
 		this.permissoes = Arrays.asList(new Role("ROLE_ADMIN"));
 	}
-	
+
 	private String email;
 	
 	private String nome;
